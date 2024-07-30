@@ -9,7 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Set MSBuild 2017 Path
+      shell: pwsh
+      run: |
+        echo "MSBUILD_PATH=C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\MSBuild.exe" >> $env:GITHUB_ENV
+
     - name: Display MSBuild Path
+      shell: pwsh
       run: |
         echo "MSBuild Path: $env:MSBUILD_PATH"
     - name: Set up JDK 11
